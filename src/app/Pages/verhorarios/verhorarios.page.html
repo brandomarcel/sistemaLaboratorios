@@ -1,0 +1,126 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    
+    <ion-buttons slot="start">
+      <ion-button autoHide="true" (click)="regresarBTN()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-title>Consultar Horarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+
+
+ 
+    <!-- Laboratorio -->
+<table style="width: 100%;">
+  <tr >
+    <td style="width: 50%;">
+      <ion-card>
+
+        <ion-card-content>
+          <ion-item>
+         
+            <ion-select slot="end" style="max-width: max-content;" okText="OK" value="" cancelText="Cancelar" id="selLabver" (ionChange)="laboratorioSelected()"  placeholder="Elija un Laboratorio">
+              <ion-select-option  value="{{lab.id}}" *ngFor="let lab of LisLaboratorio.laboratorio">{{lab.nombre}}
+              </ion-select-option>
+  
+            
+            </ion-select>
+          </ion-item >
+  
+      
+  
+     
+    
+         </ion-card-content>
+      </ion-card>
+    </td>
+    <td style="width: 50%;">
+      <ion-card>
+
+        <ion-card-content>
+          <ion-item>
+         
+            <ion-select slot="end" style="max-width: max-content;" okText="OK" value="" cancelText="Cancelar" id="selDiaver" (ionChange)="diaSelected()"  placeholder="Elija un Dia">
+              <ion-select-option slot="start" value="{{diat.id}}" *ngFor="let diat of LisDia.dia">{{diat.dia}}
+              </ion-select-option>
+  
+            
+            </ion-select>
+          </ion-item >
+  
+                  
+        
+    
+         </ion-card-content>
+      </ion-card>
+    </td>
+   
+  </tr>
+
+</table>
+
+       <!-- Buscar -->
+  <ion-item lines="none">
+    
+    <ion-fab-button  slot="end" id="btnBuscar" shape="round"  expand="block" (click)="buscarHorarios()" >Buscar
+    <ion-icon slot="start" name="search"></ion-icon>
+  </ion-fab-button>
+
+
+  </ion-item>
+
+<ion-card>
+  <ion-card-header>
+    
+    <div >
+      <h2>HORARIOS</h2>
+      <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-2">Hora Entrada</div>
+          <div class="col col-2">Hora Salida</div>
+          <div class="col col-2">Materia</div>
+          <div class="col col-2">Docente</div>
+         
+        </li>
+        <li class="table-row" *ngFor="let hor of LisMostrarTodo">
+          <div class="col col-2" data-label="">{{hor.horaInicio}}</div>
+          <div class="col col-2" data-label="">{{hor.horaFin}}</div>
+          <div class="col col-2" data-label="">{{hor.nomMateria}}</div>
+          <div class="col col-2" data-label="">{{hor.nomDocente}} </div>
+          
+        </li>
+        
+      </ul>
+    </div>
+  </ion-card-header>
+ 
+</ion-card>
+
+
+
+    
+      <!-- <td style="width: 30%;"><button><a href="guardar/hor.idHora"></a></button> </td>--> 
+  
+          
+     
+
+
+    
+
+
+
+
+
+ 
+</ion-content>

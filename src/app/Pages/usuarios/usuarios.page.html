@@ -1,0 +1,96 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="folder"></ion-back-button>
+      
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button autoHide="false" (click)="mostrarNuevo()">
+        <ion-icon size="large" name="person-add"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Laboratoristas</ion-title>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content > 
+         <!-- Searchbar with a cancel button and custom cancel button text -->
+ <ion-searchbar showCancelButton="focus" (keyup)="checkUsuario($event)" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+  <table style="width: 100%;">
+    <tr *ngFor="let usu of lisUsu.usuario" >
+      <td> 
+        <ion-card >
+   
+      
+        <ion-item style="width: 100%" class="ion-text-left"   >
+          
+          <ion-label> Cedula: {{usu.id}}</ion-label>
+        
+          <ion-button fill="outline" slot="end" (click)="EditarUsuario(usu)">
+            <ion-icon size='large' name="create" ></ion-icon>
+          </ion-button>
+          <ion-button fill="outline" slot="end" (click)="eliminarUsuario(usu)">
+            <ion-icon size='large' name="trash" color="danger"></ion-icon>
+          </ion-button>
+        
+        
+        </ion-item>
+
+      
+    
+      <ion-card-content class="ion-text-left">
+        <table>
+          <tr>
+            <td >
+              <label>Nombres:{{usu.nombre}}   {{usu.apellido}} </label>
+            </td>
+           
+                        
+          </tr>
+          <tr>
+            <td >
+              <label>Email:{{usu.email}}</label> 
+            </td>
+            <td >
+              <label>Telefono:{{usu.telefono}}</label> 
+            </td>
+          </tr>
+
+          <tr>
+            <td >
+              <label>Direccion:{{usu.direccion}}</label> 
+            </td>
+        
+          </tr>
+        
+
+        </table>
+        
+        
+       
+      </ion-card-content>
+    
+    </ion-card>
+
+      </td>
+    </tr>
+  </table>
+ 
+
+
+
+
+
+  
+  
+
+</ion-content>
+

@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="folder"></ion-back-button>
+      
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button autoHide="false" (click)="mostrarNuevo()">
+        <ion-icon size="large" name="person-add"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Docentes</ion-title>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content > 
+         <!-- Searchbar with a cancel button and custom cancel button text -->
+ <ion-searchbar showCancelButton="focus" (keyup)="checkCliente($event)" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+  <table style="width: 100%;">
+    <tr *ngFor="let docen of LisDocentes.docente" >
+      <td> 
+        <ion-card >
+   
+      
+        <ion-item style="width: 100%" class="ion-text-left"   >
+          
+          <ion-label> Cedula: {{docen.id}}</ion-label>
+        
+          <ion-button fill="outline" slot="end" (click)="EditarDocente(docen)">
+            <ion-icon size='large' name="create" ></ion-icon>
+          </ion-button>
+          <ion-button fill="outline" slot="end" (click)="eliminarDocente(docen)">
+            <ion-icon size='large' name="trash" color="danger"></ion-icon>
+          </ion-button>
+        
+        
+        </ion-item>
+
+      
+    
+      <ion-card-content class="ion-text-left">
+        <table>
+          <tr>
+            <td >
+              <label>Nombres:{{docen.nombre}}   {{docen.apellido}} </label>
+            </td>                              
+          </tr>
+        
+
+        </table>
+        
+        
+       
+      </ion-card-content>
+    
+    </ion-card>
+
+      </td>
+    </tr>
+  </table>
+ 
+
+
+
+
+
+  
+  
+
+</ion-content>

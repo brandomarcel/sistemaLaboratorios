@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Consultar Horarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+
+
+ 
+    <!-- Laboratorio -->
+<table style="width: 100%;">
+  <tr >
+    <td style="width: 50%;">
+      <ion-card>
+
+        <ion-card-content>
+          <ion-item>
+         
+            <ion-select slot="end" style="max-width: max-content;" okText="OK" value="" cancelText="Cancelar" id="selLaboratorio" (ionChange)="laboratorioSelected()"  placeholder="Elija un Laboratorio">
+              <ion-select-option  value="{{lab.id}}" *ngFor="let lab of LisLaboratorio.laboratorio">{{lab.nombre}}
+              </ion-select-option>
+  
+            
+            </ion-select>
+          </ion-item >
+  
+      
+  
+     
+    
+         </ion-card-content>
+      </ion-card>
+    </td>
+    <td style="width: 50%;">
+      <ion-card>
+
+        <ion-card-content>
+          <ion-item>
+         
+            <ion-select slot="end" style="max-width: max-content;" okText="OK" value="" cancelText="Cancelar" id="selDia" (ionChange)="diaSelected()"  placeholder="Elija un Dia">
+              <ion-select-option slot="start" value="{{dia.dia}}" *ngFor="let dia of LisDia.dia">{{dia.dia}}
+              </ion-select-option>
+  
+            
+            </ion-select>
+          </ion-item >
+  
+                  
+        
+    
+         </ion-card-content>
+      </ion-card>
+    </td>
+   
+  </tr>
+
+</table>
+
+       <!-- Guardar -->
+  <ion-item lines="none">
+    
+    <ion-fab-button  slot="end" id="btnBuscar" shape="round"  expand="block" (click)="buscarHorarios()" >Buscar
+    <ion-icon slot="start" name="search"></ion-icon>
+  </ion-fab-button>
+
+
+  </ion-item>
+
+
+
+
+   
+<ion-card>
+  <ion-card-content>
+    
+    <table border="1" style="width: 100%;">
+      <tr border="1">
+        
+        <td style="width: 20%;"> <b>Hora Entrada</b></td>
+        <td style="width: 20%;"><b>Hora Salida</b></td>
+        <td style="width: 30;"><b>Materia</b></td>
+        <td style="width: 30%;"><b>Docente</b></td>
+      </tr>
+     
+        <tr border="1" *ngFor="let hor of LisHorarios.horarios">
+    
+      
+        <td style="width: 20%;">{{hor.horaInicio}}</td>
+      
+      
+        <td style="width: 20%;">{{hor.horaFin}}</td>
+        <td style="width: 30;">{{hor.nomMateria}}</td>
+        <td style="width: 30%;">{{hor.nomDocente}} {{hor.apeDocente}}</td>
+    
+  
+          
+        </tr>
+      </table>
+
+  </ion-card-content>
+</ion-card>
+    
+
+
+
+
+
+ 
+</ion-content>

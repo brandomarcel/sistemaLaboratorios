@@ -1,0 +1,139 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registro de Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+
+
+   <!-- Tema -->
+   <ion-card>
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label>Nro. Registro</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selRegistro" (ionChange)="registroSelected()"  placeholder="Elija un Registro">
+          <ion-select-option style="max-width: max-content;" value="{{reg.id}}" *ngFor="let reg of LisRegistros.registro">{{reg.id}}
+          </ion-select-option>
+  
+        </ion-select>
+
+
+      </ion-item >
+    
+
+      <ion-item *ngFor="let regDetalle of LisRegistroDetalle.registro">
+        <table>
+         
+          <tr>
+            <td>
+              <ion-item>
+              <label >  <b>  Datos Solicitante</b>        </label>
+              <ion-input  type ="string" id="txtCeduladetallereg" ></ion-input>
+            </ion-item>
+            </td>
+          </tr>
+          <tr>  
+            
+            <td>
+              <ion-item>
+              <label id="txtNombresApell">Nombres : {{regDetalle.nombreUsuarios}} {{regDetalle.apellidoUsuarios}}  </label>
+              
+            </ion-item>
+            </td>
+        
+          </tr>
+          <tr>  
+           
+            <td>
+              <ion-item>
+              <label  id="txtnomlabreg">Laboratorio: {{regDetalle.nombreLaboratorio}} </label>
+              
+            </ion-item>
+            </td>
+          
+          </tr>
+
+        
+        </table>
+        
+        
+       
+      </ion-item>
+
+
+
+    </ion-card-content>
+  </ion-card>
+
+   <!-- Ocupante -->
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-label  position="stacked">Ocupante</ion-label>
+      <ion-input  type ="string" id="txtOcupante" placeholder="Ingrese cedula"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+  
+
+     <!-- DetalleLaboratorio -->
+
+ 
+     <ion-card>
+
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label>Maquina:</ion-label>
+          <ion-select okText="OK" value="" cancelText="Cancelar" id="selMaquina" (ionChange)="maquinaSelected()"  placeholder="Elija una maquina">
+            <ion-select-option  value="{{maqui.equiNombre}}" *ngFor="let maqui of lisMaquinas.detalleregistro">{{maqui.equiNombre}}
+            </ion-select-option>
+
+          
+          </ion-select>
+        </ion-item >
+
+        
+      
+         
+        <ion-item>
+          <ion-label  position="stacked">Observacion</ion-label>
+          <ion-input  type ="string" id="txtObservacion" placeholder="Ingrese Observacion"></ion-input>
+        </ion-item>
+       
+          
+          
+
+        
+
+     
+
+        
+      
+  
+       </ion-card-content>
+
+
+
+    </ion-card>
+
+
+                       <!-- Buscar -->
+                       <ion-item lines="none">
+    
+                        <ion-fab-button  slot="end" id="btnBuscar" shape="round"  expand="block" (click)="GuardarNuevo()" >Insertar
+                        <ion-icon slot="start" name="search"></ion-icon>
+                      </ion-fab-button>
+                    
+                    
+                      </ion-item>
+
+     <!-- Guardar -->
+     <ion-button  id="btnGuardar" shape="round" color="success" expand="full" (click)="actualizarEstadoregistro()" >Devolver Laboratorio</ion-button>
+  </ion-content>

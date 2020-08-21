@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button autoHide="true" (click)="regresarBTN()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    
+
+    <ion-title>Elija Estudiante</ion-title>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content > 
+         <!-- Searchbar with a cancel button and custom cancel button text -->
+ <ion-searchbar showCancelButton="focus" (keyup)="checkEstudiante($event)" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+  <table style="width: 100%;">
+    <tr *ngFor="let estu of LisEstudiante.usuariostodos" >
+      <td> 
+        <ion-card (click)="selecEstudiante(estu)" >
+   
+      
+        <ion-item style="width: 100%" class="ion-text-left"   >
+          
+          <ion-label> Cedula: {{estu.id}}</ion-label>
+        
+             
+        
+        </ion-item>
+
+      
+    
+      <ion-card-content class="ion-text-left">
+        <table>
+          <tr>
+            <td >
+              <label>Nombres:{{estu.nombre}}   {{estu.apellido}} </label>
+            </td>                              
+          </tr>
+        
+
+        </table>
+        
+        
+       
+      </ion-card-content>
+    
+    </ion-card>
+
+      </td>
+    </tr>
+  </table>
+ 
+
+
+
+
+
+  
+  
+
+</ion-content>

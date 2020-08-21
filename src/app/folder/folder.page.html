@@ -3,19 +3,370 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Registro de Prestamo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+ 
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+   <!-- Laboratorista -->
+   <ion-card >
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Laboratorista:</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selUsuario" (ionChange)="usuarioSelected()"  placeholder="Elija un Usuario">
+          <ion-select-option  value="{{usu.id}}" *ngFor="let usu of LisUsuarios.usuario">{{usu.nombre}} {{usu.apellido}}
+          </ion-select-option>
+
+        
+        </ion-select>
+      </ion-item >
+
+
+      <ion-item *ngFor="let usu of LisDetalleUsuario.usuario">
+        <table>
+         
+          <tr>
+            <td>
+              <ion-item>
+              <label>Telefono: {{usu.telefono}} </label>
+            </ion-item>
+            </td>
+          </tr>
+          <tr>  
+            
+            <td>
+              <ion-item>
+              <label>Email: {{usu.email}}</label>
+            </ion-item>
+            </td>
+        
+          </tr>
+      
+        </table>
+        
+        
+       
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha</ion-label>
+        <ion-input  type ="date" id="txtFecha"></ion-input>
+
+        
+      </ion-item >
+    
+
+     </ion-card-content>
+  </ion-card>
+
+     <!-- Solicitante -->
+  <ion-card>
+    <ion-item>
+
+      <ion-label>Datos del Solicitante</ion-label>
+      <ion-button fill="outline" slot="end" (click)="selDocente()">
+        <ion-icon size='large' name="people"></ion-icon>
+          <ion-label>
+            Docente
+          </ion-label>
+        
+      </ion-button>
+
+      <ion-button fill="outline" slot="end" (click)="selEstudiante()">
+        <ion-icon size='large' name="people"></ion-icon>
+          <ion-label>
+            Estudiante
+          </ion-label>
+        
+      </ion-button>
+
+      <ion-button fill="outline" slot="end" (click)="selInvitado()">
+        <ion-icon size='large' name="people"></ion-icon>
+          <ion-label>
+            Invitado
+          </ion-label>
+        
+      </ion-button>
+    </ion-item>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="stacked">Cedula</ion-label>
+        <ion-input readonly="true" id="txtCedula" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres</ion-label>
+        <ion-input readonly="true" id="txtNombre"></ion-input>
+      </ion-item>
+    
+    </ion-card-content>
+  </ion-card>
+
+
+   <!-- Tema -->
+   <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label  position="stacked">Tema</ion-label>
+        <ion-input  type ="string" id="txtTema" placeholder="Ingrese el tema"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  
+ <!-- Materia -->
+  <ion-card id="cardMateria">
+
+      <ion-card-content >
+        <ion-item>
+          <ion-label>Materia:</ion-label>
+          <ion-select okText="OK" value="" cancelText="Cancelar" id="selMateria" (ionChange)="materiaSelected()"  placeholder="Elija una Materia">
+            <ion-select-option style="max-width: max-content;" value="{{mat.id}}" *ngFor="let mat of LisMaterias.materia">{{mat.nombre}}
+            </ion-select-option>
+
+            <ion-select-option value=100 >Uso Personal
+            </ion-select-option>
+    
+          </ion-select>
+        </ion-item >
+
+        <ion-item *ngFor="let matDetalle of LisDetalleMaterias.materia">
+          <table>
+           
+            <tr>
+              <td>
+                <ion-item>
+                <label>Nivel: {{matDetalle.nomNivel}} </label>
+              </ion-item>
+              </td>
+            </tr>
+            <tr>  
+              
+              <td>
+                <ion-item>
+                <label>Carrera: {{matDetalle.carNombre}} </label>
+              </ion-item>
+              </td>
+          
+            </tr>
+            <tr>  
+             
+              <td>
+                <ion-item>
+                <label>Periodo: {{matDetalle.perNombre}} </label>
+              </ion-item>
+              </td>
+            
+            </tr>
+          </table>
+          
+          
+         
+        </ion-item>
+
+
+        
+  
+       </ion-card-content>
+    </ion-card>
+
+
+ <!-- Dia -->
+
+    <ion-card id="cardDia"> 
+      <ion-card-content>
+        
+
+        <ion-item>
+          <ion-label>Dia:</ion-label>
+          <ion-select okText="OK" value="" cancelText="Cancelar" id="selDia" (ionChange)="diaSelected()"  placeholder="Elija una Dia">
+            <ion-select-option  value="{{hor.dia}}" *ngFor="let hor of LisHoras.diaxmateria">{{hor.dia}}
+            </ion-select-option>
+
+    
+          </ion-select>
+        </ion-item >
+
+        <ion-item *ngFor="let horDetalle of LisDetalleHoras.xdiaxmateriadatos" >
+          <table>
+           
+        
+
+            <tr>
+              <td>
+                <ion-item >
+                <label  >Nombre: {{horDetalle.labNombre}} </label>
+                
+                <ion-input   id="txtNombreLab"></ion-input>
+              </ion-item>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>
+                <ion-item>
+                <label>Hora Inicio: {{horDetalle.horaInicio}} </label>
+                <ion-input  id="txtHorainicio"></ion-input>
+                
+                
+              </ion-item>
+              </td>
+              <td>
+                <ion-item>
+                <label >Hora Fin: {{horDetalle.horaFin}} </label>
+                <ion-input   id="txtHorafin"></ion-input>
+              </ion-item>
+              </td>
+            </tr>
+
+
+
+            <tr>
+              <td>
+                <ion-item>
+                <label >Capacidad: {{horDetalle.labCapacidad}} </label>
+                <ion-input   id="txtCapacidad"></ion-input>
+              </ion-item>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ion-item>
+                <label >Ubicacion: {{horDetalle.labUbicacion}} </label>
+                <ion-input   id="txtHorafin"></ion-input>
+              </ion-item>
+              </td>
+            </tr>
+           
+           
+        
+          </table>
+          
+          
+         
+        </ion-item>
+
+
+       
+      </ion-card-content>
+    </ion-card>
+    
+  
+
+<!-- Horas Invitados-Estudiantes -->
+
+<ion-card id="cardHorasInvEstu">
+  <ion-card-content>
+    <ion-item id="ionHoraInicioFin">
+  
+      <table style="width: 100%">
+        <tr >
+          <td style="width: 20%">
+            <ion-label position="stacked">Hora Inicio</ion-label>
+            <ion-input  type ="time" id="txtHorainicioOtro"></ion-input>
+
+          </td>
+          <td style="width: 20%">
+            
+          </td>
+      <td style="width:20%">
+        <ion-label position="stacked">Hora Fin</ion-label>
+        <ion-input   type ="time" id="txtHorafinOtro"></ion-input>
+      </td>
+      <td style="width: 20%">
+      
+      </td>
+       </tr>
+      </table>
+      </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+    
+
+
+
+
+
+
+  
+    <!-- Laboratorio -->
+
+    <ion-card id="cardLaboratorio">
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Laboratorio:</ion-label>
+          <ion-select okText="OK" value="" cancelText="Cancelar" id="selLaboratorio" (ionChange)="laboratorioSelected()"  placeholder="Elija un Laboratorio">
+            <ion-select-option  value="{{lab.id}}" *ngFor="let lab of LisLaboratorios.laboratorio">{{lab.nombre}}
+            </ion-select-option>
+
+          
+          </ion-select>
+        </ion-item >
+
+        <ion-item *ngFor="let lab of LisDetalleLaboratorios.laboratorio">
+          <table>
+           
+            <tr>
+              <td>
+                <ion-item>
+                <label>Tipo: {{lab.nombrelab}} </label>
+              </ion-item>
+              </td>
+            </tr>
+            <tr>  
+              
+              <td>
+                <ion-item>
+                <label>Ubicacion: {{lab.ubicacion}} </label>
+              </ion-item>
+              </td>
+          
+            </tr>
+            <tr>  
+             
+              <td>
+                <ion-item>
+                <label>Capacidad: {{lab.capacidad}}  ESTUDIANTES</label>
+              </ion-item>
+              </td>
+            
+            </tr>
+          </table>
+          
+          
+         
+        </ion-item>
+
+          
+       </ion-card-content>
+    </ion-card>
+
+
+
+     <!-- Guardar Docente -->
+     <ion-button  id="btnGuardar" shape="round" color="success" expand="full" (click)="GuardarNuevo()" >
+      
+      Guardar</ion-button>
+
+        <!-- Guardar Invitado-Estudiante -->
+
+        
+        <ion-button  id="btnGuardarInviEstu" shape="round" color="success" expand="full" (click)="GuardarInviEstu()" >
+         
+          Guardar</ion-button>
+
+
+             
+
+
+ 
 </ion-content>

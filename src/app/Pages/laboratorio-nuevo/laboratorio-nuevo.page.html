@@ -1,0 +1,64 @@
+
+  
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-button autoHide="true" (click)="regresarBTN()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Registrar Laboratorio </ion-title>
+   
+  </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input  type="string" id="txtNombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label  position="floating">Capacidad</ion-label>
+    <ion-input  type ="number" id="txtCapacidad"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Ubicacion</ion-label>
+    <ion-input id="txtUbicacion"></ion-input>
+  </ion-item>
+
+
+
+  <ion-item>
+    <ion-label>Tipo:</ion-label>
+    <ion-select okText="OK" cancelText="Cancelar" id="combotipolab">
+      <ion-select-option  *ngFor="let tiplab of tipoLaboratorios.tipolaboratorio" value="{{tiplab.id}}"  >{{tiplab.nombre}} 
+      </ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+
+
+  <ion-item >
+    <ion-label>Disponibilidad:</ion-label>
+    <ion-select id="comboDisponibilidad">
+      <ion-select-option value="DISPONIBLE">DISPONIBLE</ion-select-option>
+      <ion-select-option value="OCUPADO">OCUPADO</ion-select-option>
+     </ion-select>
+  </ion-item>
+ 
+
+  <ion-button shape="round" color="success" expand="full" (click)="GuardarLaboratorio()" >Guardar</ion-button>
+</ion-content>
+
+

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-button autoHide="true" (click)="regresarBTN()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Registrar Laboratorista </ion-title>
+   
+  </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Cedula</ion-label>
+    <ion-input id="txtCedula"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input id="txtNombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input id="txtApellido" class="ion-text-capitalize"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Direccion</ion-label>
+    <ion-input id="txtDireccion"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input id="txtEmail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefono</ion-label>
+    <ion-input id="txtTelefono"></ion-input>
+  </ion-item>
+  
+    <!-- 
+  <ion-item>
+    <ion-label position="floating">Contrasena</ion-label>
+    <ion-input id="txtPassword"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Elija el Rol:</ion-label>
+    <ion-select id="comboTipoUsu">
+      <ion-select-option value="ADMINISTRADOR">ADMINISTRADOR</ion-select-option>
+      <ion-select-option value="LABORATORISTA">LABORATORISTA</ion-select-option>
+     </ion-select>
+  </ion-item>
+-->
+
+  <ion-button shape="round" color="success" expand="full" (click)="GuardarUsuario()" >Guardar</ion-button>
+</ion-content>

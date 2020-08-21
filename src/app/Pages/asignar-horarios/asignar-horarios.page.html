@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+
+  
+    <ion-card style="width: 100%;"  (click)="MostrarReporte('ReporteUsuarios.php')">
+      <ion-item>
+        <ion-label>Usuarios Existentes</ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-card style="width: 100%;" (click)="MostrarReporte('EstadoLab.php')" >
+      <ion-item>
+        <ion-label>Estado Laboratorios</ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-card style="width: 100%;" (click)="MostrarReporte('TotalMaquinas.php')" >
+      <ion-item>
+        <ion-label>Total Maquinas</ion-label>
+      </ion-item>
+    </ion-card>
+   
+
+</ion-content>
